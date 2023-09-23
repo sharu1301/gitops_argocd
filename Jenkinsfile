@@ -24,4 +24,14 @@ pipeline{
         }
     }
 }
-stage
+stage('checkout SCM') {
+
+    steps{
+        script{
+            git credentialId: 'github',
+            url: 'https://github.com/sharu1301/gitops_argocd.git',
+            branch: 'main'
+
+        }
+    }
+}
