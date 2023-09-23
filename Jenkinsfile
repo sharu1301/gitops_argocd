@@ -28,25 +28,25 @@ pipeline {
             }
         }
 
-        // Add more stages as needed
-    }
-}
-stage('Build Docker Image'){
-    steps{
-        script{
-
-            docker_image = docker.build "${IMAGE_NAME}"
-        }
-    }
-}
-stage('Push Docker Image'){
-     steps{
-        script{
-
-            docker.withRegistry('',REGISTRY_CREDS){
-                docker_image.Push("$BUILD_NUMBER")
-                docker_image.Push('latest')
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker_image = docker.build "${IMAGE_NAME}:${IMAGE_TAG}" // Use the IMAGE_TAG
+                }
             }
         }
-     }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('', REGISTRY_CREDS) {
+                        docker_image.push("${IMAGE_TAG}") // Push the specific image tag
+                        docker_image.push('latest') // Push the 'latest' tag if needed
+                    }
+                }
+            }
+        }
+
+        // Add more stages as needed
+    }
 }
