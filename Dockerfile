@@ -1,6 +1,12 @@
-FROM python3.9-slim-buster
+FROM python:3.9-slim-buster
+
 RUN pip install flask
+
 WORKDIR /app
-COPY app.py
+
+COPY app.py /app/  
+
 EXPOSE 5000
-ENTRYPOINT ["python", "app.py"
+
+ENTRYPOINT ["python", "app.py"]
+
