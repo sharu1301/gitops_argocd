@@ -31,3 +31,22 @@ pipeline {
         // Add more stages as needed
     }
 }
+stage('Build Docker Image'){
+    steps{
+        script{
+
+            docker_image = docker.build "${IMAGE_NAME}"
+        }
+    }
+}
+stage('Push Docker Image'){
+     steps{
+        script{
+
+            docker.withRegistry('',REGISTRY_CREDS){
+                docker_image.Push("$BUILD_NUMBER")
+                docker_image.Push('latest')
+            }
+        }
+     }
+}
