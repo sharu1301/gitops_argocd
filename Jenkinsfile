@@ -80,12 +80,11 @@ pipeline {
                         git add deployment.yaml 
                         git commit -m "updated"
                         """
-                    withCredentials([gitUsernamePassword(credentialsId: 'Github', gitToolName: 'Default')]) {
+                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
 
-                   sh "git push "https://github.com/sharu1301/gitops_argocd.git" main
+                   sh "git push https://github.com/sharu1301/gitops_argocd.git main"
                     }
                 }
-            }
                     
     }
 }
