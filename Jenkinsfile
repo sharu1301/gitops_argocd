@@ -6,7 +6,7 @@ pipeline {
         APP_NAME = "gitops-argo-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}/${APP_NAME}" // Fix the typo here
-        REGISTRY_CREDS = "dockerhub"
+        REGISTRY_CREDS = "Dockerhub"
     }
 
     stages {
