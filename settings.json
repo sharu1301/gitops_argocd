@@ -1,0 +1,18 @@
+{
+    "jenkins-runner.jobs": {
+        "Gitops_Argocd_ci": {
+            "isDefault": true,
+            "runwith": "jenkins-master",
+            "name": "Gitops_Argocd_ci"
+        }
+    },
+    "jenkins-runner.hostConfigs": {
+      "jenkins-master": {
+        "url": "http://54.253.135.193:8080",
+        "user":"sharuk",
+        "password": "sharuk",
+        "useCrumbIssues": true
+
+      }  
+    }
+}
