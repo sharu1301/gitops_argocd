@@ -48,20 +48,17 @@ pipeline {
         }
 
         stage('Delete Docker Images') {
-
-    steps{
-        script{
-
-            sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
-            sh "docker rmi ${IMAGE_NAME}:latest"
-        }
-    }
+            steps {
+                script {
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
         }
 
-        stage('updating kubernetes deployment file'){
-            steps{
-                script{
-
+        stage('updating kubernetes deployment file') {
+            steps {
+                script {
                     sh """
                     cat deployment.yaml
                     sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
@@ -71,20 +68,21 @@ pipeline {
             }
         }
 
-        stage('Push the changed deployment file to Git'){
-            steps{
-                script{
+        stage('Push the changed deployment file to Git') {
+            steps {
+                script {
                     sh """
                         git config global --user.name "sharu1301"
                         git config global --user.email "reachtosharuk@gmail.com"
                         git add deployment.yaml 
                         git commit -m "updated"
-                        """
+                    """
                     withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-
-                   sh "git push https://github.com/sharu1301/gitops_argocd.git main"
+                        sh "git push https://github.com/sharu1301/gitops_argocd.git main"
                     }
                 }
-            }      
+            }
+        }
     }
 }
+
