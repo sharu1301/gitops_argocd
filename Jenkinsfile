@@ -85,6 +85,7 @@ pipeline {
                    sh "git push "https://github.com/sharu1301/gitops_argocd.git" main
                     }
                 }
+            }
                     
     }
 }
