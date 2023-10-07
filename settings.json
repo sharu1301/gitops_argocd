@@ -3,7 +3,7 @@
         "Gitops_Argocd_ci": {
             "isDefault": true,
             "runwith": "jenkins-master",
-            "name": "Gitops_Argocd_ci"
+            "name": "ArgoCD"
         }
     },
     "jenkins-runner.hostConfigs": {
