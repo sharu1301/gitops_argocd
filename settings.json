@@ -1,4 +1,5 @@
 {
+  "Kind": "JenkinsRunnerConfig",
   "jenkins-runner.jobs": {
     "Gitops_Argocd_ci": {
       "isDefault": true,
