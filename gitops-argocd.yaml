@@ -11,9 +11,9 @@ spec:
     path: .
     repoURL: 'https://github.com/sharu1301/gitops_argocd.git'
     targetRevision: main
-  sources: []
   project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
