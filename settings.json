@@ -1,5 +1,4 @@
 {
-  "Kind": "JenkinsRunnerConfig",
   "jenkins-runner.jobs": {
     "Gitops_Argocd_ci": {
       "isDefault": true,
@@ -10,7 +9,7 @@
   "jenkins-runner.hostConfigs": {
     "jenkins-master": {
       "url": "http://3.27.201.22:8080",
-      "user":"sharuk",
+      "user": "sharuk",
       "password": "Sharu@0019",
       "useCrumbIssues": true
     }
