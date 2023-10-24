@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app-deploy
+  name: flask-app
 spec:
   selector:
     matchLabels:
@@ -12,7 +12,7 @@ spec:
         app: flask-app
     spec:
       containers:
-      - name: flask-app-container
+      - name: flask-app
         image: sharukdoc/gitops-argo-app:v15
         resources:
           limits:
